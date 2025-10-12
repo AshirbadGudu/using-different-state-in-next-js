@@ -6,25 +6,6 @@ import { ChangeButton } from "./_components/ChangeButton";
 import { CodeExample, PackageManagerInstall } from "../../components";
 
 export default function NuqsPage() {
-  const packageManagers = {
-    npm: {
-      command: "npm install nuqs",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original.svg",
-    },
-    yarn: {
-      command: "yarn add nuqs",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/yarn/yarn-original.svg",
-    },
-    pnpm: {
-      command: "pnpm add nuqs",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pnpm/pnpm-original.svg",
-    },
-    bun: {
-      command: "bun add nuqs",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg",
-    },
-  };
-
   const messageDisplayCode = `'use client';
 
 import { useQueryState } from 'nuqs';
@@ -79,10 +60,7 @@ export default function NuqsPage() {
 
       <div className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Installation</h2>
-        <PackageManagerInstall
-          packageManagers={packageManagers}
-          title="Install nuqs"
-        />
+        <PackageManagerInstall packageName="nuqs" title="Install nuqs" />
       </div>
 
       <div className="mb-12">

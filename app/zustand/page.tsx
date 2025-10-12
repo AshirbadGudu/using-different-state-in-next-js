@@ -6,25 +6,6 @@ import { ChangeButton } from "./_components/ChangeButton";
 import { CodeExample, PackageManagerInstall } from "../../components";
 
 export default function ZustandPage() {
-  const packageManagers = {
-    npm: {
-      command: "npm install zustand",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original.svg",
-    },
-    yarn: {
-      command: "yarn add zustand",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/yarn/yarn-original.svg",
-    },
-    pnpm: {
-      command: "pnpm add zustand",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pnpm/pnpm-original.svg",
-    },
-    bun: {
-      command: "bun add zustand",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bun/bun-original.svg",
-    },
-  };
-
   const storeCode = `import { create } from 'zustand';
 
 interface MessageStore {
@@ -92,10 +73,7 @@ export default function ZustandPage() {
 
       <div className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Installation</h2>
-        <PackageManagerInstall
-          packageManagers={packageManagers}
-          title="Install Zustand"
-        />
+        <PackageManagerInstall packageName="zustand" title="Install Zustand" />
       </div>
 
       <div className="mb-12">
