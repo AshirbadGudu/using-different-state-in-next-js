@@ -4,23 +4,23 @@ import { useState } from "react";
 import { CodeExample } from "../../components";
 
 export default function UseStatePage() {
-  const [count, setCount] = useState(0);
+  const [message, setMessage] = useState("Hello");
 
-  const increment = () => setCount(count + 1);
-  const decrement = () => setCount(count - 1);
-  const reset = () => setCount(0);
+  const changeMessage = () => {
+    setMessage("Hello World!");
+  };
 
   const codeString = `import { useState } from 'react';
 
-export default function Counter() {
-  const [count, setCount] = useState(0);
+export default function MessageChanger() {
+  const [message, setMessage] = useState("Hello");
 
   return (
     <div>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <button onClick={() => setCount(count - 1)}>Decrement</button>
-      <button onClick={() => setCount(0)}>Reset</button>
+      <p>{message}</p>
+      <button onClick={() => setMessage("Hello World!")}>
+        Change Message
+      </button>
     </div>
   );
 }`;
@@ -30,36 +30,22 @@ export default function Counter() {
       <h1 className="text-3xl font-bold mb-6">useState Example</h1>
       <p className="mb-8 text-gray-700 dark:text-gray-300">
         The useState hook is React's built-in solution for managing local
-        component state. It's perfect for simple state management needs.
+        component state.
       </p>
 
       <CodeExample
         code={codeString}
         language="typescript"
-        title="Counter Component with useState"
+        title="Simple Message Changer with useState"
       >
         <div className="flex flex-col items-center">
-          <p className="text-2xl mb-4">Count: {count}</p>
-          <div className="flex gap-2">
-            <button
-              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-              onClick={increment}
-            >
-              Increment
-            </button>
-            <button
-              className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
-              onClick={decrement}
-            >
-              Decrement
-            </button>
-            <button
-              className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors"
-              onClick={reset}
-            >
-              Reset
-            </button>
-          </div>
+          <p className="text-2xl mb-4">{message}</p>
+          <button
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+            onClick={changeMessage}
+          >
+            Change Message
+          </button>
         </div>
       </CodeExample>
 
