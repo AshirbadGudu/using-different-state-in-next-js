@@ -5,6 +5,8 @@ import { ChangeButton } from "./_components/ChangeButton";
 import { CodeExample } from "../../components";
 
 export default function ZustandPage() {
+  const installationCode = `npm install zustand`;
+
   const storeCode = `import { create } from 'zustand';
 
 interface MessageStore {
@@ -69,6 +71,16 @@ export default function ZustandPage() {
         React. It helps eliminate prop drilling by providing a global store that
         components can access directly.
       </p>
+
+      <div className="mb-12">
+        <h2 className="text-2xl font-semibold mb-4">Installation</h2>
+        <CodeExample
+          code={installationCode}
+          language="bash"
+          title="Install Zustand"
+          showLiveOutput={false}
+        />
+      </div>
 
       <div className="mb-12">
         <h2 className="text-2xl font-semibold mb-4">Store Implementation</h2>
