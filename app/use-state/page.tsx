@@ -55,7 +55,7 @@ export default function PropDrillingExample() {
 }`;
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <>
       <h1 className="text-3xl font-bold mb-6">useState Example</h1>
       <p className="mb-8 text-gray-700 dark:text-gray-300">
         The useState hook is React's built-in solution for managing local
@@ -135,6 +135,6 @@ export default function PropDrillingExample() {
           </ul>
         </div>
       </div>
-    </div>
+    </>
   );
 }

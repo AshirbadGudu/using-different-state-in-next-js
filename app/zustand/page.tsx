@@ -84,7 +84,7 @@ export default function ZustandPage() {
 }`;
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
+    <>
       <h1 className="text-3xl font-bold mb-6">Zustand Example</h1>
       <p className="mb-8 text-gray-700 dark:text-gray-300">
         Zustand is a small, fast, and scalable state management solution for
@@ -224,6 +224,6 @@ export default function ZustandPage() {
           <li>Has TypeScript support out of the box</li>
         </ul>
       </div>
-    </div>
+    </>
   );
 }

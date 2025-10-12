@@ -1,8 +1,10 @@
 export default function ReduxToolkitPage() {
   return (
-    <div>
+    <>
       <h1>Redux Toolkit Example</h1>
-      <p>This page demonstrates Redux Toolkit for state management in Next.js</p>
-    </div>
+      <p>
+        This page demonstrates Redux Toolkit for state management in Next.js
+      </p>
+    </>
   );
 }
