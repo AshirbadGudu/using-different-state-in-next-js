@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -12,45 +13,76 @@ export default function Home() {
           height={38}
           priority
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <div className="text-center sm:text-left">
+          <h1 className="text-2xl font-bold mb-4">
+            State Management in Next.js
+          </h1>
+          <p className="mb-6">
+            Explore different state management solutions in Next.js:
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-4xl">
+          <Link
+            href="/use-state"
+            className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <h2 className="text-xl font-semibold mb-2">useState</h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              React's built-in hook for local component state
+            </p>
+          </Link>
+
+          <Link
+            href="/use-reducer"
+            className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
           >
-            Read our docs
-          </a>
+            <h2 className="text-xl font-semibold mb-2">useReducer</h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              Alternative to useState for complex state logic
+            </p>
+          </Link>
+
+          <Link
+            href="/context-api"
+            className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+          >
+            <h2 className="text-xl font-semibold mb-2">Context API</h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              React's built-in solution for global state
+            </p>
+          </Link>
+
+          <Link
+            href="/zustand"
+            className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+          >
+            <h2 className="text-xl font-semibold mb-2">Zustand</h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              Small, fast, and scalable state management
+            </p>
+          </Link>
+
+          <Link
+            href="/redux-toolkit"
+            className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors md:col-span-2 lg:col-span-1"
+          >
+            <h2 className="text-xl font-semibold mb-2">Redux Toolkit</h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              The official, recommended way to use Redux
+            </p>
+          </Link>
+        </div>
+
+        <div className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
+          <p>
+            Click on any of the above links to explore each state management
+            solution
+          </p>
         </div>
       </main>
+
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
