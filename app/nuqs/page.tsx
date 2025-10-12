@@ -1,9 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { MessageDisplay } from "./_components/MessageDisplay";
 import { ChangeButton } from "./_components/ChangeButton";
 import { CodeExample, PackageManagerInstall } from "../../components";
+
+function NuqsExample() {
+  return (
+    <div className="flex flex-col items-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
+      <Suspense fallback={<div>Loading...</div>}>
+        <MessageDisplay />
+      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ChangeButton />
+      </Suspense>
+    </div>
+  );
+}
 
 export default function NuqsPage() {
   const messageDisplayCode = `'use client';
@@ -92,10 +105,7 @@ export default function NuqsPage() {
           language="typescript"
           title="Using Components in Page"
         >
-          <div className="flex flex-col items-center p-6 bg-gray-50 dark:bg-gray-800 rounded-lg">
-            <MessageDisplay />
-            <ChangeButton />
-          </div>
+          <NuqsExample />
         </CodeExample>
       </div>
 
