@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CodeExample } from "../../components";
+import { PropDrillingExample } from "./_components/PropDrillingExample";
 
 export default function UseStatePage() {
   const [message, setMessage] = useState("Hello");
@@ -10,7 +11,7 @@ export default function UseStatePage() {
     setMessage("Hello World!");
   };
 
-  const codeString = `import { useState } from 'react';
+  const simpleCodeString = `import { useState } from 'react';
 
 export default function MessageChanger() {
   const [message, setMessage] = useState("Hello");
@@ -25,6 +26,34 @@ export default function MessageChanger() {
   );
 }`;
 
+  const propDrillingCodeString = `import { useState } from 'react';
+
+// Child component that displays the message
+function MessageDisplay({ message }) {
+  return <h1>{message}</h1>;
+}
+
+// Child component with button that triggers change
+function ChangeButton({ onChange }) {
+  return (
+    <button onClick={() => onChange("Hello World!")}>
+      Change Message
+    </button>
+  );
+}
+
+// Parent component that manages state
+export default function PropDrillingExample() {
+  const [message, setMessage] = useState("Hello");
+
+  return (
+    <div>
+      <MessageDisplay message={message} />
+      <ChangeButton onChange={setMessage} />
+    </div>
+  );
+}`;
+
   return (
     <div className="max-w-4xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6">useState Example</h1>
@@ -34,7 +63,7 @@ export default function MessageChanger() {
       </p>
 
       <CodeExample
-        code={codeString}
+        code={simpleCodeString}
         language="typescript"
         title="Simple Message Changer with useState"
       >
@@ -63,6 +92,48 @@ export default function MessageChanger() {
           <li>Best for simple, localized state management</li>
           <li>Re-renders the component when state changes</li>
         </ul>
+      </div>
+
+      {/* Prop Drilling Example Section */}
+      <div className="mt-12">
+        <h2 className="text-2xl font-bold mb-4">Prop Drilling Example</h2>
+        <p className="mb-4 text-gray-700 dark:text-gray-300">
+          This example demonstrates how state can be passed down through
+          components (prop drilling). The parent component manages the state and
+          passes it down to child components as props.
+        </p>
+
+        <CodeExample
+          code={propDrillingCodeString}
+          language="typescript"
+          title="Prop Drilling Implementation"
+        >
+          <PropDrillingExample />
+        </CodeExample>
+
+        <div className="mt-4 p-4 bg-green-50 dark:bg-green-900 rounded-lg">
+          <h3 className="text-lg font-semibold mb-2">
+            How Prop Drilling Works:
+          </h3>
+          <ul className="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300">
+            <li>The parent component manages the state with useState</li>
+            <li>
+              The message state is passed down to the MessageDisplay component
+              as a prop
+            </li>
+            <li>
+              The setMessage function is passed down to the ChangeButton
+              component as a prop
+            </li>
+            <li>
+              When the button is clicked, it calls the setter function which
+              updates the parent's state
+            </li>
+            <li>
+              The updated state flows back down to the MessageDisplay component
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
