@@ -7,8 +7,9 @@ import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 interface CodeExampleProps {
   code: string;
   language?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   title?: string;
+  showLiveOutput?: boolean;
 }
 
 export default function CodeExample({
@@ -16,6 +17,7 @@ export default function CodeExample({
   language = "typescript",
   children,
   title,
+  showLiveOutput = true,
 }: CodeExampleProps) {
   const [showCode, setShowCode] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -37,28 +39,30 @@ export default function CodeExample({
 
       <div className="flex flex-col md:flex-row">
         {/* Toggle Buttons */}
-        <div className="flex border-b border-gray-200 dark:border-gray-700 md:border-b-0 md:border-r">
-          <button
-            className={`flex-1 md:flex-none px-4 py-2 text-sm font-medium ${
-              !showCode
-                ? "bg-blue-500 text-white"
-                : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-            }`}
-            onClick={() => setShowCode(false)}
-          >
-            Live Output
-          </button>
-          <button
-            className={`flex-1 md:flex-none px-4 py-2 text-sm font-medium ${
-              showCode
-                ? "bg-blue-500 text-white"
-                : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
-            }`}
-            onClick={() => setShowCode(true)}
-          >
-            Code
-          </button>
-        </div>
+        {showLiveOutput && children && (
+          <div className="flex border-b border-gray-200 dark:border-gray-700 md:border-b-0 md:border-r">
+            <button
+              className={`flex-1 md:flex-none px-4 py-2 text-sm font-medium ${
+                !showCode
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+              }`}
+              onClick={() => setShowCode(false)}
+            >
+              Live Output
+            </button>
+            <button
+              className={`flex-1 md:flex-none px-4 py-2 text-sm font-medium ${
+                showCode
+                  ? "bg-blue-500 text-white"
+                  : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+              }`}
+              onClick={() => setShowCode(true)}
+            >
+              Code
+            </button>
+          </div>
+        )}
 
         {/* Copy Button */}
         <div className="border-b border-gray-200 dark:border-gray-700 md:border-b-0 md:border-r">
@@ -109,7 +113,7 @@ export default function CodeExample({
 
       {/* Content Area */}
       <div className="p-4 bg-white dark:bg-gray-900">
-        {showCode ? (
+        {showCode || !showLiveOutput || !children ? (
           <div className="overflow-x-auto">
             <SyntaxHighlighter
               language={language}
@@ -122,11 +126,11 @@ export default function CodeExample({
               {code}
             </SyntaxHighlighter>
           </div>
-        ) : (
+        ) : showLiveOutput && children ? (
           <div className="p-4 rounded-lg bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
             {children}
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );
