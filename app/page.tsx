@@ -21,6 +21,10 @@ export default function Home() {
           <p className="mb-6">
             Explore different state management solutions in Next.js:
           </p>
+          <p className="mb-6 text-sm text-gray-600 dark:text-gray-400">
+            Each example includes interactive code demonstrations with our
+            reusable CodeExample component
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-4xl">
