@@ -70,11 +70,21 @@ export default function Home() {
 
           <Link
             href="/redux-toolkit"
-            className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors md:col-span-2 lg:col-span-1"
+            className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
           >
             <h2 className="text-xl font-semibold mb-2">Redux Toolkit</h2>
             <p className="text-gray-600 dark:text-gray-400">
               The official, recommended way to use Redux
+            </p>
+          </Link>
+
+          <Link
+            href="/nuqs"
+            className="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors"
+          >
+            <h2 className="text-xl font-semibold mb-2">nuqs</h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              URL-based state management for Next.js
             </p>
           </Link>
         </div>
