@@ -38,6 +38,7 @@ export default function PackageManagerInstall({
   title,
 }: PackageManagerInstallProps) {
   const [activeTab, setActiveTab] = useState<PackageManagerKey>("npm");
+  const [copied, setCopied] = useState(false);
 
   // Update commands with the specific package name
   const packageManagersWithCommands = {
@@ -59,6 +60,13 @@ export default function PackageManagerInstall({
     },
   };
 
+  const copyText = (text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
   return (
     <div className="my-6 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
       <div className="px-4 py-2 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
@@ -75,6 +83,7 @@ export default function PackageManagerInstall({
                 : "bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
             }`}
             onClick={() => setActiveTab(pkg as PackageManagerKey)}
+            type="button"
           >
             <img
               src={icon}
@@ -93,9 +102,54 @@ export default function PackageManagerInstall({
 
       <div className="p-4 bg-white dark:bg-gray-900">
         <div className="overflow-x-auto">
-          <pre className="p-4 rounded-lg bg-gray-800 text-gray-100">
-            {packageManagersWithCommands[activeTab].command}
-          </pre>
+          <div className="relative">
+            <pre className="p-4 rounded-lg bg-gray-800 text-gray-100 text-sm font-mono overflow-x-auto pr-16">
+              {packageManagersWithCommands[activeTab].command}
+              <button
+                type="button"
+                onClick={() => {
+                  copyText(packageManagersWithCommands[activeTab].command);
+                }}
+                className="absolute top-3 right-3 px-3 py-1.5 text-sm flex items-center bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-md transition-all"
+              >
+                {copied ? (
+                  <>
+                    <svg
+                      className="w-4 h-4 mr-1 text-green-500"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                    Copied!
+                  </>
+                ) : (
+                  <>
+                    <svg
+                      className="w-4 h-4 mr-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                      />
+                    </svg>
+                    Copy
+                  </>
+                )}
+              </button>
+            </pre>
+          </div>
         </div>
       </div>
     </div>

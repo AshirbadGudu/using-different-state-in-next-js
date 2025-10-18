@@ -84,18 +84,21 @@ export default function Counter() {
           <p className="text-2xl mb-4">Count: {state.count}</p>
           <div className="flex gap-2">
             <button
+              type="button"
               className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
               onClick={() => dispatch({ type: "increment" })}
             >
               Increment
             </button>
             <button
+              type="button"
               className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition-colors"
               onClick={() => dispatch({ type: "decrement" })}
             >
               Decrement
             </button>
             <button
+              type="button"
               className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition-colors"
               onClick={() => dispatch({ type: "reset" })}
             >
