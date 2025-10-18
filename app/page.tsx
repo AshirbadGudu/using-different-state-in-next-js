@@ -1,10 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export default function Home() {
   return (
     <>
       <div className="flex flex-col gap-[32px] items-center sm:items-start">
+        <ThemeToggle />
+
         <Image
           className="dark:invert"
           src="/next.svg"

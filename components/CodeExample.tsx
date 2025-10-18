@@ -42,6 +42,7 @@ export default function CodeExample({
         {showLiveOutput && children && (
           <div className="flex border-b border-gray-200 dark:border-gray-700 md:border-b-0 md:border-r">
             <button
+              type="button"
               className={`flex-1 md:flex-none px-4 py-2 text-sm font-medium ${
                 !showCode
                   ? "bg-blue-500 text-white"
@@ -52,6 +53,7 @@ export default function CodeExample({
               Live Output
             </button>
             <button
+              type="button"
               className={`flex-1 md:flex-none px-4 py-2 text-sm font-medium ${
                 showCode
                   ? "bg-blue-500 text-white"
@@ -67,6 +69,7 @@ export default function CodeExample({
         {/* Copy Button */}
         <div className="border-b border-gray-200 dark:border-gray-700 md:border-b-0 md:border-r">
           <button
+            type="button"
             className="px-4 py-2 text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 flex items-center"
             onClick={copyToClipboard}
           >
